@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="167dp"
+    android:layout_height="193dp"
+    android:layout_marginTop="10dp"
+    android:id="@+id/branch_sem"
+    android:elevation="2dp"
+    android:background="@drawable/shadow"
+    android:layout_marginLeft="10dp"
+    android:layout_marginBottom="10dp"
+    android:layout_marginRight="10dp">
+    <RelativeLayout
+        android:id="@+id/branch_name1"
+        android:layout_width="167dp"
+        android:layout_height="193dp"
+        android:clickable="true"
+        android:clipToPadding="false"
+        android:orientation="horizontal">
+
+        <!--title and desc-->
+        <RelativeLayout
+            android:layout_width="167dp"
+            android:layout_height="193dp"
+            android:orientation="horizontal"
+            android:layout_alignParentTop="true">
+            <ImageView
+                android:id="@+id/branch_image"
+                android:layout_width="165dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="5dp"
+                android:src="@drawable/dummy"/>
+            <ImageView
+                android:id="@+id/img_permium"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/ic_premium"
+                android:padding="8dp"
+                android:visibility="gone"/>
+
+
+            <TextView
+                android:id="@+id/gec_branchname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="10dp"
+                android:layout_below="@id/branch_image"
+                android:text=""
+                android:textColor="#111"
+                android:textSize="12sp" />
+
+            <RelativeLayout
+                android:id="@+id/layout_video"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:layout_below="@id/gec_branchname">
+                <RelativeLayout
+                    android:id="@+id/video"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="5dp">
+
+                    <TextView
+                        android:id="@+id/text_video"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="video"
+                        android:textColor="@color/edit_text"
+                        android:textSize="12sp" />
+                    <TextView
+                        android:id="@+id/total_video"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:text=""
+                        android:layout_toRightOf="@id/text_video"
+                        android:textColor="@color/edit_text"
+                        android:textSize="14sp" /></RelativeLayout>
+                <RelativeLayout
+                    android:id="@+id/ddocument"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/video"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="5dp">
+                    <TextView
+                        android:id="@+id/total_document1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Document"
+                        android:textColor="@color/edit_text"
+                        android:textSize="12sp" />
+                    <TextView
+                        android:id="@+id/total_document"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:text=""
+                        android:layout_toRightOf="@id/total_document1"
+                        android:textColor="@color/edit_text"
+                        android:textSize="14sp" /></RelativeLayout>
+            </RelativeLayout>
+            <Button
+                android:id="@+id/purchase_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/layout_video"
+                android:background="@drawable/circularbluebordersolid"
+                android:fontFamily="@font/proximanovaregular"
+                android:text="Purchase"
+                android:visibility="gone"
+                android:layout_marginBottom="10dp"
+                android:layout_centerInParent="true"
+                android:textColor="@color/white" />
+            <Button
+                android:id="@+id/free_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/layout_video"
+                android:background="@drawable/free_btn"
+                android:fontFamily="@font/proximanovaregular"
+                android:text="Free"
+                android:visibility="gone"
+                android:layout_marginBottom="10dp"
+                android:layout_centerInParent="true"
+                android:textColor="@color/white" />
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

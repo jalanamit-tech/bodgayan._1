@@ -1,0 +1,454 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="50dp"
+    android:id="@+id/home_page"
+    android:background="@color/bg_color"
+    tools:context=".Activity.GecHomeActivity">
+
+    <ScrollView
+        android:id="@+id/scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:id="@+id/relative_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <HorizontalScrollView
+            android:id="@+id/slider_view"
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
+            android:layout_gravity="center"
+            android:fillViewport="true"
+            android:background="@color/white"
+            android:fadeScrollbars="true"
+            android:scrollbars="none"
+            >
+            <!--android:scrollbars="horizontal|vertical" -->
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:orientation="horizontal" >
+
+                <com.denzcoskun.imageslider.ImageSlider
+                    android:layout_width="match_parent"
+                    app:auto_cycle="true"
+                    app:delay="0"
+                    android:id="@+id/slider"
+                    app:period="5000"
+                    app:error_image="@drawable/bg_gery"
+                    app:placeholder="@drawable/bg_gery"
+                    android:layout_height="wrap_content"/>
+
+
+            </LinearLayout>
+        </HorizontalScrollView>
+
+        <RelativeLayout
+            android:id="@+id/today_classes"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/white"
+            android:layout_below="@+id/slider_view">
+            <ImageView
+                android:id="@+id/live_image"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="10dp"
+                android:src="@drawable/livelogo"/>
+            <TextView
+                android:id="@+id/text_live"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@id/live_image"
+                android:layout_marginRight="10dp"
+
+                android:textColor="#F44336"
+                android:text="Live Classes "/>
+            <TextView
+                android:id="@+id/text_viewAll"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:textColor="#0E1D79"
+                android:text="View All"/>
+
+        <TextView
+            android:id="@+id/noclasses"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="No Live Classes Today"
+            android:layout_centerInParent="true"
+            android:textSize="16dp"
+            android:textStyle="bold"
+            android:textColor="@color/gradientViolet"
+            android:visibility="gone"/>
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/gec_home_recycle1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="55dp"
+                android:layout_marginBottom="5dp"
+                android:nestedScrollingEnabled="false"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+        </RelativeLayout>
+        <!--Slide Options-->
+        <LinearLayout
+            android:id="@+id/tab_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shadow"
+            android:weightSum="4"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_below="@id/today_classes"
+            android:layout_marginBottom="5dp"
+            android:gravity="center_vertical">
+
+            <RelativeLayout
+                android:id="@+id/layout_all_course"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_centerInParent="true"
+                    android:layout_marginBottom="10dp">
+
+                <ImageView
+                    android:id="@+id/myclass_image"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:alpha="0.8"
+                    android:src="@drawable/ic_register" />
+
+                <TextView
+                    android:id="@+id/my_class"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="My Course"
+                    android:textColor="#AFB0B4"
+                    android:layout_below="@id/myclass_image"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+                </RelativeLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/layout_my_assignment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_centerInParent="true"
+                    android:layout_marginBottom="10dp">
+
+                <ImageView
+                    android:id="@+id/assignment_image"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="15dp"
+                    android:alpha="0.8"
+                    android:src="@drawable/ic_book" />
+
+                <TextView
+                    android:id="@+id/assignment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Assignment"
+                    android:layout_below="@id/assignment_image"
+                    android:textColor="#AFB0B4"
+                    android:layout_marginLeft="10dp"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+                </RelativeLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/layout_online_test"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_centerInParent="true"
+                    android:layout_marginBottom="10dp">
+
+                <ImageView
+                    android:id="@+id/marked_image"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="18dp"
+                    android:alpha="0.8"
+                    android:src="@drawable/ic_training" />
+
+                <TextView
+                    android:id="@+id/marked"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Online Test"
+                    android:layout_below="@id/marked_image"
+                    android:textColor="#AFB0B4"
+                    android:textSize="12sp"
+                    android:layout_marginLeft="15dp"
+                    android:textStyle="bold" />
+                </RelativeLayout>
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/layout_buy_course"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_centerInParent="true"
+                    android:layout_marginBottom="10dp">
+
+                <ImageView
+                    android:id="@+id/onlinetest_image"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:alpha="0.8"
+                    android:src="@drawable/ic_money" />
+                <TextView
+                    android:id="@+id/online_test"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Buy Course"
+                    android:layout_below="@id/onlinetest_image"
+                    android:textColor="#AFB0B4"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+                </RelativeLayout>
+            </RelativeLayout>
+
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/course"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="20dp"
+            android:layout_below="@id/tab_layout"
+            android:layout_marginBottom="5dp"
+            android:gravity="center_vertical">
+
+            <LinearLayout
+                android:id="@+id/courses"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="left">
+
+                <ImageView
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:alpha="0.8"
+                    android:src="@drawable/circle_blue_fil" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="My Courses"
+                    android:textColor="#AFB0B4"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:gravity="left">
+
+                <ImageView
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:alpha="0.6"
+                    android:src="@drawable/circle_blue_fil"
+                    android:visibility="gone" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+        <RelativeLayout
+            android:id="@+id/my_course"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="110dp"
+            android:layout_below="@+id/course">
+            <RelativeLayout
+                android:id="@+id/layout_courses"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="gone"
+                android:background="@drawable/shadow">
+            <TextView
+                android:id="@+id/nocourse"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Explore All Courses"
+                android:textSize="20dp"
+                android:gravity="center"
+                android:visibility="gone"
+                android:textStyle="bold"
+                android:textColor="@color/gradientViolet" />
+            </RelativeLayout>
+<!--            <Button-->
+<!--                android:id="@+id/purchase_btn"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_below="@id/nocourse"-->
+<!--                android:layout_marginTop="10dp"-->
+<!--                android:layout_centerHorizontal="true"-->
+<!--                android:visibility="gone"-->
+<!--                android:background="@drawable/circularbluebordersolid"-->
+<!--                android:fontFamily="@font/proximanovaregular"-->
+<!--                android:text="Purchase"-->
+<!--                android:textColor="@color/white" />-->
+       <androidx.recyclerview.widget.RecyclerView
+           android:id="@+id/gec_home_recycle"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_marginBottom="70dp"
+           android:nestedScrollingEnabled="false"
+           app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    </ScrollView>
+    <LinearLayout
+        android:id="@+id/footer"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:weightSum="3"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/bottom_layout">
+        <RelativeLayout
+            android:id="@+id/layout_home"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+            <ImageView
+                android:id="@+id/image_home"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:src="@drawable/home_color"
+                />
+            <TextView
+                android:id="@+id/text_home"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Home"
+                android:layout_marginTop="5dp"
+                android:layout_below="@id/image_home"
+                android:layout_centerHorizontal="true"
+                android:textColor="#3F51B5"/>
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/layout_history"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_toRightOf="@id/layout_home">
+            <ImageView
+                android:id="@+id/image_history"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:src="@drawable/ic_world"
+                />
+            <TextView
+                android:id="@+id/text_history"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Website"
+                android:layout_marginTop="7dp"
+                android:layout_below="@id/image_history"
+                android:layout_centerHorizontal="true"
+                android:textColor="#111"/>
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/layout_logout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_toRightOf="@id/layout_history">
+            <ImageView
+                android:id="@+id/image_logout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:src="@drawable/ic_logout"
+                />
+            <TextView
+                android:id="@+id/text_logout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Logout"
+                android:layout_marginTop="5dp"
+                android:layout_below="@id/image_logout"
+                android:layout_centerHorizontal="true"
+                android:textColor="#111"/>
+
+        </RelativeLayout>
+
+
+
+
+    </LinearLayout>
+
+
+
+
+
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

@@ -1,0 +1,5 @@
+include ':app'
+include ':commonlib'
+include ':mobilertc'
+include ':sample'
+rootProject.name='Bodhayan Academy'

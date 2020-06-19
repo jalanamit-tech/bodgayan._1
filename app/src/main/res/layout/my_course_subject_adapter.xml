@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="5dp"
+    android:layout_marginBottom="5dp"
+    android:layout_marginLeft="5dp"
+    android:layout_marginRight="5dp"
+    android:id="@+id/branch_live1"
+    android:elevation="3dp"
+    android:clickable="true"
+    android:background="@drawable/shadow"
+    >
+    <RelativeLayout
+        android:id="@+id/branch_sem"
+        android:layout_width="380dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_height="80dp">
+
+        <ImageView
+            android:id="@+id/live_image"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginBottom="10dp"
+            android:src="@drawable/dummy"
+            android:layout_marginLeft="10dp"/>
+
+        <TextView
+            android:id="@+id/gec_branchname"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_toRightOf="@id/live_image"
+            android:text="branch name"
+            android:textColor="#8EC3CF"
+            android:textSize="20sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Videos : "
+            android:layout_toRightOf="@id/live_image"
+            android:layout_below="@id/gec_branchname"
+            android:layout_marginStart="10dp"
+            android:textColor="@color/edit_text"
+            android:textSize="14sp" />
+        <TextView
+            android:id="@+id/total_video"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/live_image"
+            android:layout_below="@id/gec_branchname"
+            android:layout_marginStart="65dp"
+            android:text=""
+            android:textColor="@color/edit_text"
+            android:textSize="14sp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_toRightOf="@id/live_image"
+            android:layout_below="@id/total_video"
+            android:text="Document : "
+            android:textColor="@color/edit_text"
+            android:textSize="14sp" />
+        <TextView
+            android:id="@+id/total_document"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/total_video"
+            android:layout_toRightOf="@id/live_image"
+            android:layout_marginStart="85dp"
+            android:text=""
+            android:textColor="@color/edit_text"
+            android:textSize="14sp" />
+
+        <ImageView
+            android:layout_width="5dp"
+            android:layout_height="5dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:alpha="0.6"
+            android:visibility="gone"
+            android:src="@drawable/circle_white_fil" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="By Google"
+            android:visibility="gone"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+
+
+
+    </RelativeLayout>
+
+
+
+</RelativeLayout>

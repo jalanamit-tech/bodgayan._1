@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="167dp"
+    android:layout_height="173dp"
+    android:layout_marginTop="5dp"
+    android:id="@+id/branch_sem"
+    android:elevation="3dp"
+    android:background="@drawable/shadow"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp">
+    <RelativeLayout
+       android:id="@+id/branch_name1"
+        android:layout_width="165dp"
+        android:layout_height="170dp"
+        android:clickable="true"
+        android:clipToPadding="false"
+        android:orientation="horizontal">
+
+        <!--title and desc-->
+        <RelativeLayout
+            android:layout_width="165dp"
+            android:layout_height="170dp"
+            android:orientation="horizontal"
+            android:layout_alignParentTop="true">
+            <ImageView
+                android:id="@+id/branch_image"
+                android:layout_width="165dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="5dp"
+                android:src="@drawable/dummy"/>
+            <TextView
+                android:id="@+id/gec_branchname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="10dp"
+                android:layout_below="@id/branch_image"
+                android:text="amit kuma"
+                android:textColor="#111"
+                android:textSize="12sp" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

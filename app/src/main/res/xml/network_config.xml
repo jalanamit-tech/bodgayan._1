@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">winbeesolutions.livebox.co.in</domain>
+        <domain includeSubdomains="true">edu.bodhayanacademy.in</domain>
+        <domain includeSubdomains="true">onlinetest.bodhayanacademy.in</domain>
+
+
+    </domain-config>
+</network-security-config>

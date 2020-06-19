@@ -1,0 +1,124 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="158dp"
+    android:layout_marginTop="10dp"
+    android:id="@+id/branch_sem"
+    android:elevation="4dp"
+    android:background="@drawable/shadow"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout
+        android:id="@+id/branch_sem_topic"
+        android:layout_width="match_parent"
+        android:layout_height="155dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="15dp"
+        android:clipToPadding="false"
+        android:background="@drawable/shadow">
+        <ImageView
+            android:id="@+id/lock_image"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:visibility="gone"
+            android:src="@drawable/ic_password"/>
+
+        <!--title and desc-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_alignParentLeft="true"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/gec_subject"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="2dp"
+                android:text="Example-1"
+                android:layout_gravity="end"
+                android:textColor="#8EC3CF"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/gec_topic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_gravity="end"
+                android:layout_marginTop="15dp"
+                android:text="Example-2"
+                android:textColor="#65AACC"
+                android:textSize="12sp" />
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_alignParentLeft="true"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/faculty_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Faculty name"
+                    android:layout_gravity="end"
+                    android:textColor="@color/edit_text"
+                    android:textSize="12sp" />
+                <TextView
+                    android:id="@+id/faculty_designation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Designation"
+                    android:layout_gravity="end"
+                    android:layout_marginTop="5dp"
+                    android:textColor="@color/edit_text"
+                    android:textSize="12sp" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true">
+                <TextView
+                    android:id="@+id/released_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Published"
+                    android:layout_gravity="end"
+                    android:textColor="@color/edit_text"
+                    android:textSize="12sp" />
+
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/document_type"
+            android:layout_width="60dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="10dp"/>
+
+    </RelativeLayout>
+
+
+
+
+
+</RelativeLayout>

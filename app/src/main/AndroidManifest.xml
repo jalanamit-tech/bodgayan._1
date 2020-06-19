@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.winbee.bodhayanacademy">
+
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.REQUEST_COMPANION_RUN_IN_BACKGROUND" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="com.example.permission.MAPS_RECEIVE" />
+    <uses-permission android:name="com.example.permission.USE_FULL_SCREEN_INTENT" />
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+    <uses-permission
+        android:name="android.permission.REAL_GET_TASKS"
+        tools:ignore="ProtectedPermissions" />
+    <uses-permission android:name="android.permission.USE_FULL_SCREEN_INTENT" />
+
+    <permission
+        android:name="us.zoom.sdksample.permission.KUBI_MESSAGE"
+        android:protectionLevel="signature" />
+
+    <uses-permission android:name="us.zoom.sdksample.permission.KUBI_MESSAGE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/icon"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:networkSecurityConfig="@xml/network_config"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".Activity.ExoPlayer"></activity>
+        <activity android:name=".Activity.LiveVideoActivity" />
+        <activity android:name=".Activity.DemoYouTubeLiveActivity" />
+        <activity android:name=".Activity.DemoWebActivity" />
+        <activity android:name=".Activity.ViewDemoTopicActivity" />
+        <activity android:name=".Activity.ViewDemoActivity" />
+        <activity android:name=".OtpVerficationActivity" />
+        <activity android:name=".Activity.ViewResultActivity" />
+        <activity android:name=".Activity.SubmittedAssignmentActivity" />
+        <activity android:name=".Activity.AssignmentToSubmitAllActivity" />
+        <activity android:name=".Activity.SubmitAssignmentActivity" />
+        <activity android:name=".Activity.AssignmentWebActivity" />
+        <activity
+            android:name=".Activity.AssignmentToSubmitActivity"
+            android:label="Assignment"
+            android:parentActivityName=".Activity.GecHomeActivity" />
+        <activity
+            android:name=".Activity.MyCourseSubjectActivity"
+            android:label="Subject"
+            android:parentActivityName=".Activity.GecHomeActivity" />
+        <activity
+            android:name=".Activity.AllCourseActivity"
+            android:label="All Course"
+            android:parentActivityName=".Activity.GecHomeActivity" />
+        <activity
+            android:name=".Activity.PermiumSellActivity"
+            android:label="Payment"
+            android:parentActivityName=".Activity.GecHomeActivity" />
+        <activity
+            android:name=".Activity.SubjectActivity"
+            android:label="Test Name"
+            android:parentActivityName=".Activity.GecHomeActivity" />
+        <activity android:name=".Activity.OnlineQuestionActivity" />
+        <activity
+            android:name=".Activity.InstructionsActivity"
+            android:label="Instructions"
+            android:parentActivityName=".Activity.OnlineTestActivity" />
+        <activity
+            android:name=".Activity.OnlineTestActivity"
+            android:label="Test Name"
+            android:parentActivityName=".Activity.SubjectActivity" />
+        <activity
+            android:name=".Activity.AskedNewQuestionActivity"
+            android:label="Doubt"
+            android:parentActivityName=".Activity.GecSemesterTopicActivity" />
+        <activity
+            android:name=".Activity.AskedSolutionActivity"
+            android:label="Solutions"
+            android:parentActivityName=".Activity.GecSemesterTopicActivity" />
+        <activity
+            android:name=".Activity.AskedQuestionActivity"
+            android:label="Questions"
+            android:parentActivityName=".Activity.GecSemesterTopicActivity" />
+        <activity
+            android:name=".Activity.AllLiveClassActivity"
+            android:label="Live Classes"
+            android:parentActivityName=".Activity.GecHomeActivity" />
+        <activity android:name=".Activity.GecYouTubeLiveActivity"
+            android:label="Live Class"
+            android:parentActivityName=".Activity.GecHomeActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"/>
+        <activity android:name=".Activity.GecYouTubeActivity" />
+        <activity
+            android:name=".Activity.GecNotificationActivity"
+            android:label="Notifications"
+            android:parentActivityName=".Activity.GecHomeActivity" />
+        <activity
+            android:name=".Activity.ForgetPasswordActivity"
+            android:label="Forget Password" />
+        <activity
+            android:name=".Activity.WebActivity"
+            android:label="PDF"
+            android:parentActivityName=".Activity.GecHomeActivity" />
+        <activity
+            android:name=".Activity.GecSemesterTopicActivity"
+            android:label="Topic"
+            android:parentActivityName=".Activity.GecHomeActivity" />
+        <activity
+            android:name=".Activity.GecBranchSemesterActivity"
+            android:label="Semester"
+            android:parentActivityName=".Activity.GecHomeActivity" />
+        <activity
+            android:name=".Activity.GecHomeActivity"
+            android:label="@string/title_activity_bodhayan"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".RegisterActivity" />
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".IntroSliderActivity" />
+        <activity
+            android:name=".Activity.MyProfile"
+            android:parentActivityName=".Activity.GecHomeActivity" />
+        <activity
+            android:name=".Activity.Aboutus"
+            android:parentActivityName=".Activity.GecHomeActivity" />
+        <activity
+            android:name=".SplashPageActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <meta-data
+            android:name="com.razorpay.ApiKey"
+            android:value="rzp_live_zKYI4KyMozYP37" />
+    </application>
+
+</manifest>

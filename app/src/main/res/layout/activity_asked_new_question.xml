@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_color"
+    tools:context=".Activity.AskedNewQuestionActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingLeft="24dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="70dp"
+        android:paddingRight="24dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/proximanovaregular"
+                android:gravity="center"
+                android:text="What is doubt...Tell me?"
+                android:textColor="#3c4b5d"
+                android:textSize="22sp" />
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/circularbordersolidtop"
+            android:gravity="center"
+            android:padding="18dp">
+
+            <EditText
+                android:id="@+id/editTextQuestionTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:fontFamily="@font/proximanovaregular"
+                android:hint="Question Title"
+                android:textColor="@color/edit_text"
+                android:textColorHint="@color/edit_text"
+                android:inputType="text"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/circularbordersolidbottom"
+            android:orientation="horizontal"
+            android:padding="18dp">
+
+            <EditText
+                android:id="@+id/editTextQuestionDescription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:fontFamily="@font/proximanovaregular"
+                android:hint="Description"
+                android:inputType="text"
+                android:textColorHint="@color/edit_text"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/circularbluebordersolidmiddle"
+            android:orientation="horizontal"
+            android:visibility="gone"
+            android:padding="18dp">
+
+            <ss.anoop.awesomeedittext.AwesomeEditText
+                android:id="@+id/editTextUserid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:fontFamily="@font/proximanovaregular"
+                android:hint="Userid"
+                android:inputType="text"
+                android:textColorHint="@color/edit_text"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/circularbordersolidbottom"
+            android:orientation="horizontal"
+            android:visibility="gone"
+            android:padding="18dp">
+
+            <ss.anoop.awesomeedittext.AwesomeEditText
+                android:id="@+id/editTextDocumentId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:fontFamily="@font/proximanovaregular"
+                android:hint="DocumentId"
+                android:inputType="text"
+                android:textColorHint="@color/edit_text"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+
+        <Button
+            android:id="@+id/buttonSubmit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="14dp"
+            android:background="@drawable/circularbluebordersolid"
+            android:fontFamily="@font/proximanovaregular"
+            android:text="Submit"
+            android:layout_gravity="center"
+            android:textColor="@color/white" />
+
+
+
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/footer"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:weightSum="3"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/bottom_layout">
+        <RelativeLayout
+            android:id="@+id/layout_home"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+            <ImageView
+                android:id="@+id/image_home"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:src="@drawable/home_color"
+                />
+            <TextView
+                android:id="@+id/text_home"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Home"
+                android:layout_marginTop="5dp"
+                android:layout_below="@id/image_home"
+                android:layout_centerHorizontal="true"
+                android:textColor="#3F51B5"/>
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/layout_history"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_toRightOf="@id/layout_home">
+            <ImageView
+                android:id="@+id/image_history"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:src="@drawable/ic_world"
+                />
+            <TextView
+                android:id="@+id/text_history"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Website"
+                android:layout_marginTop="7dp"
+                android:layout_below="@id/image_history"
+                android:layout_centerHorizontal="true"
+                android:textColor="#111"/>
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/layout_logout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_toRightOf="@id/layout_history">
+            <ImageView
+                android:id="@+id/image_logout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:src="@drawable/ic_logout"
+                />
+            <TextView
+                android:id="@+id/text_logout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Logout"
+                android:layout_marginTop="5dp"
+                android:layout_below="@id/image_logout"
+                android:layout_centerHorizontal="true"
+                android:textColor="#111"/>
+
+        </RelativeLayout>
+
+
+
+
+    </LinearLayout>
+
+
+</RelativeLayout>

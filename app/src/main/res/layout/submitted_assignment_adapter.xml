@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="5dp"
+    android:layout_marginBottom="5dp"
+    android:layout_marginLeft="5dp"
+    android:layout_marginRight="5dp"
+
+    android:id="@+id/branch_live1"
+    android:elevation="3dp"
+    android:clickable="true"
+    android:background="@drawable/shadow"
+    >
+
+    <RelativeLayout
+        android:id="@+id/branch_live"
+        android:layout_width="380dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_height="80dp">
+        <ImageView
+            android:id="@+id/live_image"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginBottom="10dp"
+            android:src="@drawable/dummy"
+            android:layout_marginLeft="10dp"/>
+
+        <TextView
+            android:id="@+id/assignment_subject"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@id/live_image"
+            android:text="amit kumar jalan"
+            android:textColor="#030303"
+            android:textSize="12sp"/>
+
+
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Subject"
+            android:layout_marginStart="10dp"
+            android:layout_toRightOf="@id/live_image"
+            android:layout_below="@id/assignment_subject"
+            android:textColor="@color/edit_text"
+            android:textSize="12sp" />
+        <TextView
+            android:id="@+id/assignment_topic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="65dp"
+            android:layout_below="@id/assignment_subject"
+            android:layout_toRightOf="@id/live_image"
+            android:text="subject"
+            android:textColor="@color/edit_text"
+            android:textSize="12sp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_toRightOf="@id/live_image"
+            android:layout_below="@id/assignment_topic"
+            android:text="Topic "
+            android:textColor="@color/edit_text"
+            android:textSize="12sp" />
+        <TextView
+            android:id="@+id/assignment_teacher"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="65dp"
+            android:layout_toRightOf="@id/live_image"
+            android:layout_below="@id/assignment_topic"
+            android:text="topic"
+            android:textColor="@color/edit_text"
+            android:textSize="12sp" />
+
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginStart="10dp"-->
+<!--            android:layout_toRightOf="@id/live_image"-->
+<!--            android:layout_below="@id/assignment_teacher"-->
+<!--            android:text="Assignment : "-->
+<!--            android:textColor="@color/edit_text"-->
+<!--            android:textSize="12sp" />-->
+        <TextView
+            android:id="@+id/assignment_dead_line"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/live_image"
+            android:layout_below="@id/assignment_teacher"
+            android:text="mr amit"
+            android:layout_marginStart="10dp"
+            android:textColor="@color/edit_text"
+            android:textSize="12sp" />
+
+
+
+    </RelativeLayout>
+
+
+</RelativeLayout>
