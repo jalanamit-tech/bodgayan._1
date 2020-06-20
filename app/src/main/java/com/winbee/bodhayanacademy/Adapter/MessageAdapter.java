@@ -32,8 +32,8 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageA
     public MessageAdapter(Context context, List<Message> messages, DatabaseReference messageDb)
     {
         this.context=context;
-        this.messages=messages;
         this.messageDb=messageDb;
+        this.messages=messages;
     }
 
     @NonNull

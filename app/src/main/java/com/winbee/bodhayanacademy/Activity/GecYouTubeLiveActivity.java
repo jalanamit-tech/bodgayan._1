@@ -9,7 +9,6 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -77,139 +76,51 @@ import static com.google.android.exoplayer2.Player.STATE_IDLE;
 import static com.google.android.exoplayer2.Player.STATE_READY;
 
 
-public class GecYouTubeLiveActivity extends AppCompatActivity implements View.OnClickListener{
-    public static final String API_KEY = "AIzaSyBlEPocq2s2bDmWDMBRXAf8Mhf3wlFNYGI";
-    private LiveClass liveClass;
-    RelativeLayout home,histroy,logout,layout_details;
-    TextView video_topic,video_info,video_started,video_subject;
-    Button btn_less;
-    ImageButton btn_more;
-    private RecyclerView video_list_recycler;
-    private ProgressBarUtil progressBarUtil;
-    private TodayLiveAdapter adapter;
-    String UserId,UserName;
-    FirebaseAuth auth;
-    FirebaseDatabase database;
-    DatabaseReference messagedb;
-    MessageAdapter messageAdapter;
-    FireBaseUserId u;
-    List<Message> messages;
+@SuppressWarnings("deprecation")
+public class GecYouTubeLiveActivity extends AppCompatActivity  {
+
+
+    private String hlsVideoUri = "http://winbeesolutions.livebox.co.in/BodhayanAcademyhls/LiveClasses.m3u8";
+    // private String hlsVideoUri = "https://r2---sn-qxaeen7l.c.drive.google.com/videoplayback?expire=1592508366&ei=jofrXs2UMdPHuAWEn4ywAQ&ip=2405:205:1209:d0e2:640b:9183:ddfc:2908&cp=QVNOVEZfV1NUR1hOOlRJb0ZJTGlHZTNIaHpycXYzSnhKYWxJcE9UQVNVZUVIRWpsckRVUl9KeG8&id=72ea60dbb8916d31&itag=18&source=webdrive&requiressl=yes&mh=Oh&mm=32&mn=sn-qxaeen7l&ms=su&mv=m&mvi=1&pl=45&ttl=transient&susc=dr&driveid=1pc_0tMyXs67N-YxUQSmPNEtzgFfD-py7&app=explorer&mime=video/mp4&vprv=1&prv=1&dur=735.050&lmt=1587735688974171&mt=1592493866&sparams=expire,ei,ip,cp,id,itag,source,requiressl,ttl,susc,driveid,app,mime,vprv,prv,dur,lmt&sig=AOq0QJ8wRgIhALIhKqiQ7heKRfexzIT8imTs2NctbF_d8VruQshKf3BtAiEAnQAN6w0CcWeYBgnipcoTdnHoU4X_m6jwK1SSA1kUMew=&lsparams=mh,mm,mn,ms,mv,mvi,pl&lsig=AG3C_xAwRQIgeilxlDj1Fxt-B0DcTIBSwouPUJ9gqVCO85-VZqntoa8CIQCw0U_bFhvwF3KkHckTj1Thb5KudmmIwq8ocH1OZ9VBkg==&cpn=TP8RA6N2aoG4dGQu&c=WEB_EMBEDDED_PLAYER&cver=20200617";
     private SimpleExoPlayer player;
-    private WebView simpleExoPlayerView;
-    private String videoUrl = "http://winbeesolutions.livebox.co.in/BodhayanAcademyhls/LiveClasses.m3u8";
-
-
-    RecyclerView messageView;
-    EditText txt_message;
-    ImageButton btn_send;
-    private boolean fullscreen=false;
-
+    PlayerView simpleExoPlayerView;
+    boolean fullscreen = false;
+    private String TAG ="tag";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gec_you_tube_live);
-        init();
-        home=findViewById(R.id.layout_home);
-        auth = FirebaseAuth.getInstance();
-        histroy=findViewById(R.id.layout_history);
-        logout=findViewById(R.id.layout_logout);
-        video_topic = findViewById(R.id.video_topic);
-        video_info = findViewById(R.id.video_info);
-        video_started = findViewById(R.id.video_started);
-        btn_more = findViewById(R.id.btn_more);
-        btn_less = findViewById(R.id.btn_less);
-        video_subject = findViewById(R.id.video_subject);
-        layout_details = findViewById(R.id.layout_details);
-        video_list_recycler = findViewById(R.id.gec_semester_recycle);
-        progressBarUtil   =  new ProgressBarUtil(this);
 
-
-
-
-        UserId=SharedPrefManager.getInstance(this).refCode().getUserId();
-        UserName=SharedPrefManager.getInstance(this).refCode().getName();
-
-
-        btn_more.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                btn_less.setVisibility(View.VISIBLE);
-                btn_more.setVisibility(View.GONE);
-                layout_details.setVisibility(View.VISIBLE);
-            }
-        });
-
-        btn_less.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                btn_less.setVisibility(View.GONE);
-                btn_more.setVisibility(View.VISIBLE);
-                layout_details.setVisibility(View.GONE);
-            }
-        });
-
-
-        histroy.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://bodhayancoaching.com/"));
-                startActivity(intent);
-            }
-        });
-        logout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                logout();
-            }
-        });
-        home.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(GecYouTubeLiveActivity.this, GecHomeActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        Bundle bundle = getIntent().getExtras();
-        if(bundle!=null){
-            liveClass = (LiveClass) bundle.getSerializable("ContentLink");
-            if(liveClass!=null){
-                System.out.println("Suree:"+liveClass.getContentLink().equalsIgnoreCase("ContentLink"));            }
-        }
-
-
-
-        video_topic.setText(liveClass.getTopic());
-        video_info.setText(liveClass.getContent_Info());
-        video_started.setText(liveClass.getDuration());
-        video_subject.setText(liveClass.getSubject());
-
+        // 1. Create a default TrackSelector
         Handler mainHandler = new Handler();
-
-
         BandwidthMeter bandwidthMeter = new DefaultBandwidthMeter();
         TrackSelection.Factory videoTrackSelectionFactory = new AdaptiveTrackSelection.Factory(bandwidthMeter);
         TrackSelector trackSelector = new DefaultTrackSelector(videoTrackSelectionFactory);
 
+        // 2. Create a default LoadControl
         LoadControl loadControl = new DefaultLoadControl();
 
+
+        // 3. Create the player
         player = ExoPlayerFactory.newSimpleInstance(this, trackSelector, loadControl);
 
         simpleExoPlayerView =  findViewById(R.id.exoplayer_view);
-        simpleExoPlayerView.loadUrl(videoUrl);
-        //simpleExoPlayerView.setPlayer(player);
+        simpleExoPlayerView.setPlayer(player);
 
+        // Measures bandwidth during playback. Can be null if not required.
         DefaultBandwidthMeter defaultBandwidthMeter = new DefaultBandwidthMeter();
+        // Produces DataSource instances through which media data is loaded.
         DataSource.Factory dataSourceFactory = new DefaultDataSourceFactory(this,
                 Util.getUserAgent(this, "Exo2"), defaultBandwidthMeter);
+        // Produces Extractor instances for parsing the media data.
         ExtractorsFactory extractorsFactory = new DefaultExtractorsFactory();
+        // This is the MediaSource representing the media to be played.
         HlsMediaSource hlsMediaSource = new HlsMediaSource.Factory(dataSourceFactory)
                 .setAllowChunklessPreparation(true)
-                .createMediaSource(Uri.parse(videoUrl));
+                .createMediaSource(Uri.parse(hlsVideoUri));
 
-
-        /*player.prepare(hlsMediaSource);
+        player.prepare(hlsMediaSource);
         simpleExoPlayerView.requestFocus();
         player.setPlayWhenReady(true);
         player.addListener(new Player.EventListener() {
@@ -235,15 +146,16 @@ public class GecYouTubeLiveActivity extends AppCompatActivity implements View.On
                 }
             }
         });
-*/
 
-  /*      final ImageView fullscreenButton = simpleExoPlayerView.findViewById(R.id.exo_fullscreen_icon);
+
+        final ImageView fullscreenButton = simpleExoPlayerView.findViewById(R.id.exo_fullscreen_icon);
         fullscreenButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(fullscreen) {
                     fullscreenButton.setImageDrawable(ContextCompat.getDrawable(GecYouTubeLiveActivity.this, R.drawable.ic_fullscreen_black_24dp));
                     getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_VISIBLE);
+                    Log.d(TAG, "onClick: going to normal");
                     if(getSupportActionBar() != null){
                         getSupportActionBar().show();
                     }
@@ -255,194 +167,38 @@ public class GecYouTubeLiveActivity extends AppCompatActivity implements View.On
                     fullscreen = false;
                 }else{
                     fullscreenButton.setImageDrawable(ContextCompat.getDrawable(GecYouTubeLiveActivity.this, R.drawable.ic_fullscreen_exit_black_24dp));
-                    getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_FULLSCREEN
-                            |View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
-                            |View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
+                    getWindow().getDecorView().setSystemUiVisibility(
+                            View.SYSTEM_UI_FLAG_FULLSCREEN
+                                    |View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
+                                    |View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
                     if(getSupportActionBar() != null){
                         getSupportActionBar().hide();
                     }
-                    setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+                    setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_USER_LANDSCAPE);
                     RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) simpleExoPlayerView.getLayoutParams();
                     params.width = ViewGroup.LayoutParams.MATCH_PARENT;
                     params.height = ViewGroup.LayoutParams.MATCH_PARENT;
                     simpleExoPlayerView.setLayoutParams(params);
                     fullscreen = true;
+                    Log.d(TAG, "onClick: going to land");
                 }
             }
         });
+    }
 
-*/
+
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (player != null) {
+            player.setPlayWhenReady(false);
+        }
     }
 
     @Override
     protected void onDestroy() {
-
-        player.release();
-        player = null;
         super.onDestroy();
-
-    }
-
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-
-
-        pausePlayer();
-
-
-    }
-
-
-    private void pausePlayer() {
-        player.setPlayWhenReady(false);
-
-    }
-
-    private void startPlayer() {
-        player.setPlayWhenReady(true);
-
-
-    }
-
-//    @Override
-//    private void onResume() {
-//        super.onResume();
-//        startPlayer();
-//
-//    }
-
-
-    private void init() {
-        database=FirebaseDatabase.getInstance();
-        u=new FireBaseUserId();
-        messageView=findViewById(R.id.recycler_message);
-        txt_message=findViewById(R.id.txt_message);
-        btn_send=findViewById(R.id.btn_send);
-        btn_send.setOnClickListener(this);
-        messages= new ArrayList<>();
-    }
-
-
-//
-
-    private void logout() {
-        SharedPrefManager.getInstance(this).logout();
-        startActivity(new Intent(this, LoginActivity.class));
-        Objects.requireNonNull(this).finish();
-    }
-
-    @Override
-    public void onClick(View view) {
-        Log.d("tag", "onClick: "+u.getName());
-
-        if (!TextUtils.isEmpty(txt_message.getText().toString())){
-            Message message = new Message(txt_message.getText().toString(),u.getName());
-            txt_message.setText("");
-            messagedb.push().setValue(message);
-
-        }else{
-            Toast.makeText(this, "Message cannot be empty", Toast.LENGTH_SHORT).show();
-        }
-    }
-    @Override
-    protected void onStart() {
-        super.onStart();
-
-        final FirebaseUser firebaseUser = auth.getCurrentUser();
-
-        u.setEmail(firebaseUser.getEmail());
-        u.setUid(firebaseUser.getUid());
-        u.setName(UserName);
-
-        database.getReference("Users").child(firebaseUser.getUid()).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                u=dataSnapshot.getValue(FireBaseUserId.class);
-                u.setUid(firebaseUser.getUid());
-                u.setName(UserName);
-                AllModel.name=u.getName();
-                Log.d("tag", "onDataChange: "+AllModel.name);
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-
-        messagedb=database.getReference("messages");
-        messagedb.addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
-                Message message = dataSnapshot.getValue(Message.class);
-                message.setKey(dataSnapshot.getKey());
-                messages.add(message);
-                displayMessages(messages);
-
-            }
-
-            @Override
-            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
-                Message message = dataSnapshot.getValue(Message.class);
-                message.setKey(dataSnapshot.getKey());
-                List<Message> newMessages  = new ArrayList<Message>();
-                for (Message m:messages){
-                    if (m.getKey().equals(message.getKey())){
-                        newMessages.add(message);
-                    }else{
-                        newMessages.add(m);
-                    }
-                }
-                messages = newMessages;
-                displayMessages(messages);
-
-            }
-
-            @Override
-            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
-
-                Message message = dataSnapshot.getValue(Message.class);
-                message.setKey(dataSnapshot.getKey());
-                List<Message> newMessages = new ArrayList<Message>();
-
-                for (Message m:messages){
-                    if (!m.getKey().equals(message.getKey())){
-                        newMessages.add(m);
-                    }
-                }
-                messages = newMessages;
-                displayMessages(messages);
-
-            }
-
-            @Override
-            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-    }
-
-    @Override
-    protected  void onResume(){
-        super.onResume();
-        messages=new ArrayList<>();
-
-
-    }
-
-    private void displayMessages(List<Message> messages) {
-        messageView.setLayoutManager(new LinearLayoutManager(GecYouTubeLiveActivity.this));
-        messageAdapter = new MessageAdapter(GecYouTubeLiveActivity.this,messages,messagedb);
-        messageView.setAdapter(messageAdapter);
+        player.release();
     }
 }

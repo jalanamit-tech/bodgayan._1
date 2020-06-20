@@ -36,9 +36,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        android:networkSecurityConfig="@xml/network_config"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Activity.ExoPlayer"></activity>
+        <activity android:name=".Activity.IFrameActivity"></activity>
+        <activity android:name=".Activity.DriveVideoActivity" />
+        <activity android:name=".Activity.ExoPlayer" />
         <activity android:name=".Activity.LiveVideoActivity" />
         <activity android:name=".Activity.DemoYouTubeLiveActivity" />
         <activity android:name=".Activity.DemoWebActivity" />
@@ -95,10 +96,11 @@
             android:name=".Activity.AllLiveClassActivity"
             android:label="Live Classes"
             android:parentActivityName=".Activity.GecHomeActivity" />
-        <activity android:name=".Activity.GecYouTubeLiveActivity"
+        <activity
+            android:name=".Activity.GecYouTubeLiveActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
             android:label="Live Class"
-            android:parentActivityName=".Activity.GecHomeActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize"/>
+            android:parentActivityName=".Activity.GecHomeActivity" />
         <activity android:name=".Activity.GecYouTubeActivity" />
         <activity
             android:name=".Activity.GecNotificationActivity"
@@ -110,7 +112,13 @@
         <activity
             android:name=".Activity.WebActivity"
             android:label="PDF"
-            android:parentActivityName=".Activity.GecHomeActivity" />
+            android:parentActivityName=".Activity.GecHomeActivity">
+
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
+        </activity>
         <activity
             android:name=".Activity.GecSemesterTopicActivity"
             android:label="Topic"

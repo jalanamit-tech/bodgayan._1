@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
+import com.winbee.bodhayanacademy.Activity.ExoPlayer;
 import com.winbee.bodhayanacademy.Activity.GecYouTubeLiveActivity;
 import com.winbee.bodhayanacademy.Model.LiveClass;
 import com.winbee.bodhayanacademy.R;
@@ -54,7 +55,7 @@ public class GecHomeLiveAdapter extends RecyclerView.Adapter<GecHomeLiveAdapter.
                     public void onClick(View view) {
                         if (list.get(position).getCS_type_code().equals(1)) {
                             Bundle bundle = new Bundle();
-                            Intent intent = new Intent(context, GecYouTubeLiveActivity.class);
+                            Intent intent = new Intent(context, ExoPlayer.class);
                             bundle.putSerializable("ContentLink", list.get(position));
                             intent.putExtras(bundle);
                             context.startActivity(intent);

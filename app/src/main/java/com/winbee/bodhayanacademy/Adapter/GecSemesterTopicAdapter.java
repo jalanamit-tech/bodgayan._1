@@ -14,7 +14,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.winbee.bodhayanacademy.Activity.DriveVideoActivity;
 import com.winbee.bodhayanacademy.Activity.GecYouTubeActivity;
+import com.winbee.bodhayanacademy.Activity.IFrameActivity;
 import com.winbee.bodhayanacademy.Activity.WebActivity;
 import com.winbee.bodhayanacademy.Model.UrlName;
 import com.winbee.bodhayanacademy.R;
@@ -64,16 +66,26 @@ public class GecSemesterTopicAdapter extends RecyclerView.Adapter<GecSemesterTop
             holder.branch_sem.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                            Intent intent = new Intent();
-                            intent.setAction(Intent.ACTION_VIEW);
-                            intent.addCategory(Intent.CATEGORY_BROWSABLE);
-                            intent.setData(Uri.parse(list.get(position).getURL()));
-                            context.startActivity(intent);
-                        }
-
-                  //  Toast.makeText(view.getContext(), "video not supported ,plzz open web broswer", Toast.LENGTH_LONG).show();
-
+                    Bundle bundle = new Bundle();
+                    Intent intent = new Intent(context, IFrameActivity.class);
+                    bundle.putSerializable("URL",list.get(position));
+                    intent.putExtras(bundle);
+                    context.startActivity(intent);
+                }
             });
+//            holder.branch_sem.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View view) {
+//                            Intent intent = new Intent();
+//                            intent.setAction(Intent.ACTION_VIEW);
+//                            intent.addCategory(Intent.CATEGORY_BROWSABLE);
+//                            intent.setData(Uri.parse(list.get(position).getURL()));
+//                            context.startActivity(intent);
+//                        }
+//
+//                  //  Toast.makeText(view.getContext(), "video not supported ,plzz open web broswer", Toast.LENGTH_LONG).show();
+//
+//            });
 
         }
         else if(list.get(position).getType().equalsIgnoreCase("PPT")){

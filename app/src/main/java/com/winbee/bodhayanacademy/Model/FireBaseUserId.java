@@ -7,6 +7,7 @@ public class FireBaseUserId {
     public FireBaseUserId() {
     }
 
+
     public String getUid() {
         return uid;
     }

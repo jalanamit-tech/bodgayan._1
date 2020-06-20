@@ -65,8 +65,9 @@ public class OtpVerficationActivity extends AppCompatActivity {
         otpVerify.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                userValidation();
                 FireBaseValidation();
+                userValidation();
+
             }
         });
     }

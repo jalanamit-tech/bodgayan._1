@@ -1,14 +1,23 @@
 package com.winbee.bodhayanacademy.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
+import android.content.pm.ActivityInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.google.android.exoplayer2.DefaultLoadControl;
 import com.google.android.exoplayer2.ExoPlayerFactory;
 import com.google.android.exoplayer2.LoadControl;
+import com.google.android.exoplayer2.Player;
 import com.google.android.exoplayer2.SimpleExoPlayer;
 import com.google.android.exoplayer2.extractor.DefaultExtractorsFactory;
 import com.google.android.exoplayer2.extractor.ExtractorsFactory;
@@ -25,11 +34,19 @@ import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory;
 import com.google.android.exoplayer2.util.Util;
 import com.winbee.bodhayanacademy.R;
 
+import static com.google.android.exoplayer2.Player.STATE_BUFFERING;
+import static com.google.android.exoplayer2.Player.STATE_ENDED;
+import static com.google.android.exoplayer2.Player.STATE_IDLE;
+import static com.google.android.exoplayer2.Player.STATE_READY;
+
 public class ExoPlayer extends AppCompatActivity {
 
     private SimpleExoPlayer player;
    private PlayerView simpleExoPlayerView;
-    private String videoUrl = "http://winbeesolutions.livebox.co.in/WinbeeDemohls/WinbeeDemo.m3u8";
+   // private String videoUrl = "http://winbeesolutions.livebox.co.in/WinbeeDemohls/WinbeeDemo.m3u8";
+    private String videoUrl = "https://vimeo.com/showcase/7265364/embed";
+    //private String videoUrl = "http://winbeesolutions.livebox.co.in/BodhayanAcademyhls/LiveClasses.m3u8";
+    boolean fullscreen = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,7 +85,66 @@ public class ExoPlayer extends AppCompatActivity {
         player.prepare(hlsMediaSource);
         simpleExoPlayerView.requestFocus();
         player.setPlayWhenReady(true);
+        player.addListener(new Player.EventListener() {
+            @Override
+            public void onPlayerStateChanged(boolean playWhenReady, int playbackState) {
+                switch (playbackState){
 
+                    case STATE_BUFFERING:
+                        Toast.makeText(ExoPlayer.this, "buffering", Toast.LENGTH_SHORT).show();
+                        break;
+                    case STATE_READY:
+                        Toast.makeText(ExoPlayer.this, "ready", Toast.LENGTH_SHORT).show();
+
+                        break;
+                    case STATE_ENDED:
+                        Toast.makeText(ExoPlayer.this, "Ended", Toast.LENGTH_SHORT).show();
+
+                        break;
+                    case STATE_IDLE:
+                        Toast.makeText(ExoPlayer.this, "Ideal", Toast.LENGTH_SHORT).show();
+
+                        break;
+                }
+            }
+        });
+
+        final ImageView fullscreenButton = simpleExoPlayerView.findViewById(R.id.exo_fullscreen_icon);
+        fullscreenButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(fullscreen) {
+                    fullscreenButton.setImageDrawable(ContextCompat.getDrawable(ExoPlayer.this, R.drawable.ic_fullscreen_black_24dp));
+                    getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_VISIBLE);
+                   // Log.d(TAG, "onClick: going to normal");
+                    if(getSupportActionBar() != null){
+                        getSupportActionBar().show();
+                    }
+                    setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+                    RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) simpleExoPlayerView.getLayoutParams();
+                    params.width = ViewGroup.LayoutParams.MATCH_PARENT;
+                    params.height = (int) ( 200 * getApplicationContext().getResources().getDisplayMetrics().density);
+                    simpleExoPlayerView.setLayoutParams(params);
+                    fullscreen = false;
+                }else{
+                    fullscreenButton.setImageDrawable(ContextCompat.getDrawable(ExoPlayer.this, R.drawable.ic_fullscreen_exit_black_24dp));
+                    getWindow().getDecorView().setSystemUiVisibility(
+                            View.SYSTEM_UI_FLAG_FULLSCREEN
+                                    |View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
+                                    |View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
+                    if(getSupportActionBar() != null){
+                        getSupportActionBar().hide();
+                    }
+                    setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_USER_LANDSCAPE);
+                    RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) simpleExoPlayerView.getLayoutParams();
+                    params.width = ViewGroup.LayoutParams.MATCH_PARENT;
+                    params.height = ViewGroup.LayoutParams.MATCH_PARENT;
+                    simpleExoPlayerView.setLayoutParams(params);
+                    fullscreen = true;
+                   // Log.d(TAG, "onClick: going to land");
+                }
+            }
+        });
 
     }
 
